@@ -8,9 +8,7 @@ export default function Product({ id }) {
   )
 
   // load the required product from state
-  const product = useStoreState(
-    state => state.products.items.find(product => product.id === id)
-  )
+  const product = useStoreState( state => state.products.getById(id))
 
   // state to track when we are saving to basket
   const [adding, setAdding] = useState(false);
@@ -18,7 +16,7 @@ export default function Product({ id }) {
   // callback to handle click, saving to basket
   const onAddToBasketClick = useCallback(async () => {
     setAdding(true);
-    addProductToBasket(product.id);
+    await addProductToBasket(product.id);
     setAdding(false);
   }, [product]);
 

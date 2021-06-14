@@ -10,11 +10,7 @@ export default function Basket() {
     actions => actions.basket.removeProduct
   )
 
-  const basketProducts = useStoreState(state =>
-    state.basket.productIds.map(productId => 
-      state.products.items.find(product => product.id === productId)
-    )
-  );
+  const basketProducts = useStoreState(state => state.basket.products);
 
   return (
     <div>
