@@ -4,3 +4,6 @@
 
 export const addProductToBasket = id =>
   new Promise(resolve => setTimeout(resolve, 750));
+
+export const removeProductToBasket = id =>
+  new Promise(resolve => setTimeout(resolve, 750));

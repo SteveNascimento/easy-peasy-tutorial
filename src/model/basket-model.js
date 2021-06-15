@@ -5,6 +5,7 @@ import * as basketService from '../services/basket-service'
 const basketModel = {
 
     productIds: [],
+
     products: computed(
         [
             state => state.productIds,
@@ -13,18 +14,29 @@ const basketModel = {
         (productIds, products) => productIds.map(productId =>
             products.find(product => product.id === productId)),
     ),
+
     addProduct: thunk(async (actions, payload) => {
         await basketService.addProductToBasket(payload)
 
         actions.addedProduct(payload)
     }),
+
     count: computed(state => state.productIds.length),
     addedProduct: action((state, payload) => {
         state.productIds.push(payload)
     }),
-    removeProduct: action(((state, payload) => {
+
+    removeProduct: thunk( async (actions, payload) => {
+        await basketService.removeProductToBasket(payload)
+
+        actions.removeedProduct(payload)
+    }),
+
+    removeedProduct: action((state, payload) => {
         state.productIds.splice(payload, 1)
-    }))
+    }),
+
+    
 
 };
   

@@ -1,6 +1,7 @@
 import React from "react";
 import BasketCount from "./basket-count";
 import Logo from "./logo";
+import './Header.css'
 
 export default function Header() {
   return (

@@ -14,3 +14,7 @@ body {
   color: green;
   font-weight: bold;
 }
+
+.Article {
+  padding: 10px;
+}

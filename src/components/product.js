@@ -1,5 +1,8 @@
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import React, { useCallback, useState } from 'react';
+import { Button } from 'antd';
+import 'antd/dist/antd.css'
+
 
 export default function Product({ id }) {
 
@@ -26,11 +29,7 @@ export default function Product({ id }) {
       <p>
         <em>£ {product.price}</em>
       </p>
-      {adding ? (
-        'Adding...'
-      ) : (
-        <button onClick={onAddToBasketClick}>Add to basket</button>
-      )}
+      <Button loading={adding ? true : false} onClick={onAddToBasketClick} type="primary">Add to basket</Button>
     </div>
   );
 }

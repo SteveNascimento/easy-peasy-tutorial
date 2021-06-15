@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "antd": "^4.16.2",
     "easy-peasy": "3.0.0-rc.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",

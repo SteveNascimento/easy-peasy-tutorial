@@ -8,7 +8,7 @@ export default function BasketCount() {
 
   return (
     <div className="BasketCount">
-      <Link to="/basket">Basket({basketCount} items)</Link>
+      <Link to="/basket">Basket ({basketCount} items)</Link>
     </div>
   );
 }

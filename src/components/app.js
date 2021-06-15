@@ -11,17 +11,20 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Switch>
-          <Route path="/" exact component={ProductList} />
-          <Route
-            path="/product/:id"
-            render={({ match }) => (
-              <Product id={parseInt(match.params.id, 10)} />
-            )}
-          />
-          <Route path="/basket" exact component={Basket} />
-        </Switch>
-        <AuditLog />
+        <article className="Article">
+          <Switch>
+            <Route path="/" exact component={ProductList} />
+            <Route
+              path="/product/:id"
+              render={({ match }) => (
+                <Product id={parseInt(match.params.id, 10)} />
+              )}
+            />
+            <Route path="/basket" exact component={Basket} />
+          </Switch>
+          <AuditLog />
+        </article>
+        
       </div>
     </BrowserRouter>
   );
