@@ -1,0 +1,14 @@
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo:hover {
+    font-size: 25px;
+    color: #2980B9;  /* fallback for old browsers */
+    color: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    
+}

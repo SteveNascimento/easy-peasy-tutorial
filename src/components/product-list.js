@@ -1,6 +1,7 @@
 import { useStoreState } from 'easy-peasy';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Divider } from 'antd'
 
 export default function ProductList() {
 
@@ -8,14 +9,12 @@ export default function ProductList() {
 
   return (
     <div>
-      <h2>Our products</h2>
-      <ul>
-        {products.map(product => (
-          <li key={product.id}>
-            <Link to={`/product/${product.id}`}>{product.name}</Link>
-          </li>
-        ))}
-      </ul>
+      <Divider orientation='left'>Our products</Divider>
+      {products.map(product => (
+        <li key={product.id}>
+          <Link to={`/product/${product.id}`}>{product.name}</Link>
+        </li>
+      ))}
     </div>
   );
 }

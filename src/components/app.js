@@ -5,6 +5,7 @@ import Header from "./header";
 import Product from "./product";
 import ProductList from "./product-list";
 import AuditLog from "./audit-log";
+import './app.css'
 
 export default function App() {
   return (
@@ -16,9 +17,14 @@ export default function App() {
             <Route path="/" exact component={ProductList} />
             <Route
               path="/product/:id"
-              render={({ match }) => (
-                <Product id={parseInt(match.params.id, 10)} />
-              )}
+              render={({ match }) => {
+                console.log(match)
+                return (
+                  <Product id={parseInt(match.params.id, 10)} />
+
+                )
+              }
+              }
             />
             <Route path="/basket" exact component={Basket} />
           </Switch>

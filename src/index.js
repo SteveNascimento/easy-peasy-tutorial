@@ -4,7 +4,7 @@ import App from "./components/app";
 import { StoreProvider } from 'easy-peasy'
 import store from './store'
 
-import "./styles.css";
+import './index.css'
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

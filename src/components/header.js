@@ -1,13 +1,15 @@
 import React from "react";
 import BasketCount from "./basket-count";
 import Logo from "./logo";
-import './Header.css'
+import { Layout } from 'antd'
+import './header.css'
 
-export default function Header() {
+export default function funHeader() {
+  const { Header } = Layout
   return (
-    <div className="Header">
-      <Logo />
+    <Header className='Header'>
+      <Logo /> 
       <BasketCount />
-    </div>
+    </Header>
   );
 }
