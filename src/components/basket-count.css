@@ -1,6 +1,10 @@
 .BasketCount {
     color: white;
     border-radius: 5px;
-    background-color: teal;
+    background-color: #16C172;
     padding: 10px 15px;
+}
+.BasketCount:hover {
+    color: #fff;
+    padding: 15px 20px;
 }

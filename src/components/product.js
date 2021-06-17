@@ -1,35 +1,54 @@
-import { useStoreActions, useStoreState } from 'easy-peasy';
-import React, { useCallback, useState } from 'react';
-import { Button } from 'antd';
+import { useStoreActions } from 'easy-peasy';
+import React, { useState } from 'react';
+import { Button, message, Card } from 'antd';
 import 'antd/dist/antd.css'
+import './product.css'
 
 
-export default function Product({ id }) {
+export default function Product({item, op, idx}) {
 
   const addProductToBasket = useStoreActions(
     actions => actions.basket.addProduct
   )
 
-  // load the required product from state
-  const product = useStoreState( state => state.products.getById(id))
+  const removeProductFromBasket = useStoreActions(
+    actions => actions.basket.removeProduct
+  )
 
-  // state to track when we are saving to basket
-  const [adding, setAdding] = useState(false);
+  const [alt, setAlt] = useState(false);
 
-  // callback to handle click, saving to basket
-  const onAddToBasketClick = useCallback(async () => {
-    setAdding(true);
-    await addProductToBasket(product.id);
-    setAdding(false);
-  }, [product]);
+  const onAddToBasketClick = async () => {
+    setAlt(true);
+    await addProductToBasket(item);
+    setAlt(false);
+    message.success(
+      'Produto adicionado ao carrinho!'
+    );
+  }
+
+  const onRemovingProductFromBasket =  async () => {
+    setAlt(true)
+    await removeProductFromBasket({item, idx})
+    setAlt(false)
+    message.success(
+      'Produto removido do carrinho com sucesso!'
+    )
+  }
+
+  const accomplishOperation = async () => {
+    if (op === 'Remover') {
+      await onRemovingProductFromBasket(idx)
+    } else if (op === 'Adicionar') {
+      await onAddToBasketClick()
+    }
+  }
 
   return (
-    <div>
-      <h2>{product.name}</h2>
-      <p>
-        <em>£ {product.price}</em>
-      </p>
-      <Button loading={adding ? true : false} onClick={onAddToBasketClick} type="primary">Add to basket</Button>
-    </div>
+    <Card title={item.name} className='Card'>
+      <div>
+        <p>R$: {item.price} </p>
+        <Button loading={alt ? true : false} type='primary' onClick={accomplishOperation}>{op}</Button>
+      </div>
+    </Card>
   );
 }
